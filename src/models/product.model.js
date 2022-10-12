@@ -18,12 +18,7 @@ const registerProduct = async (name) => {
   const [result] = await connection.execute(
     'INSERT INTO StoreManager.products (name) VALUES (?)', [name],
   );
-
-  const [[data]] = await connection.execute(
-    'SELECT * FROM StoreManager.products WHERE id = ?', [result.insertId],
-  );
-
-  return data;
+  return result.insertId;
 };
 
 module.exports = {

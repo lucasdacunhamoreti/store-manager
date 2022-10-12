@@ -13,4 +13,16 @@ const productsDB = [
 	}
 ]
 
-module.exports = { productsDB };
+const newProductRegistered = {
+  name: "Mickey Mouse"
+};
+
+const newProductRegisteredReturned = {
+  id: 10,
+  name: "Mickey Mouse"
+};
+
+
+
+
+module.exports = { productsDB, newProductRegistered, newProductRegisteredReturned };

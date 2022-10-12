@@ -31,6 +31,14 @@ describe('Verificando model de produtos', function () {
 
       expect(result).to.equal(undefined);
     });
+
+    it('Cadastrar um novo produto com sucesso', async function () {
+      sinon.stub(connection, 'execute').resolves([{ insertId: 10 }]);
+
+      const result = await productModel.registerProduct('Mickey Mouse');
+
+      expect(result).to.equal(10);
+    });
   });
   afterEach(sinon.restore);
 });

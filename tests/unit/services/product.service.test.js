@@ -37,6 +37,28 @@ describe('Verificando service de produtos', function () {
       expect(result.code).to.deep.equal(404);
       expect(result.error).to.deep.equal(serviceMock.productNotFound.message);
     });
+
+    it('Cadastra um produto com sucesso', async function () {
+      sinon.stub(productModel, 'registerProduct').resolves({ id: 10, name: 'Mickey Mouse' });
+
+      const result = await productService.registerProduct({ name: 'Mickey Mouse' });
+
+      expect(result.code).to.deep.equal(201);
+    });
+
+    it('Retorna erro ao cadastrar um produto com nome menor que 5 caracteres', async function () {
+      const result = await productService.registerProduct({ name: 'Mick' });
+
+      expect(result.code).to.deep.equal(422);
+      expect(result.error).to.deep.equal('"name" length must be at least 5 characters long');
+    });
+
+    it('Retorna erro ao cadastrar um produto sem a chave name', async function () {
+      const result = await productService.registerProduct({});
+
+      expect(result.code).to.deep.equal(400);
+      expect(result.error).to.deep.equal('"name" is required');
+    });
   });
   afterEach(sinon.restore);
 });

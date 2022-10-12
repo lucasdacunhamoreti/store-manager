@@ -12,7 +12,7 @@ const getOneProduct = async (id) => {
   return { code: 200, message: result };
 };
 
-const registerProduct = async (name, body) => {
+const registerProduct = async (body) => {
   const error = await validate.validateProduct(body);
   if (error) {
     const errorMessage = error.details[0].message;
@@ -21,8 +21,9 @@ const registerProduct = async (name, body) => {
       return { code: 422, error: errorMessage };
     }
   }
-  const result = await productModel.registerProduct(name);
-  return { code: 201, message: result };
+  const result = await productModel.registerProduct(body.name);
+  const getProduct = await productModel.getOneProduct(result);
+  return { code: 201, message: getProduct };
 };
 
 module.exports = {

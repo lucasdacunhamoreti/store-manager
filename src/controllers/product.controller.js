@@ -13,8 +13,7 @@ const getOneProduct = async (req, res) => {
 };
 
 const registerProduct = async (req, res) => {
-  const { name } = req.body;
-  const { code, message, error } = await productService.registerProduct(name, req.body);
+  const { code, message, error } = await productService.registerProduct(req.body);
   if (error) return res.status(code).json({ message: error });
   res.status(code).json(message);
 };
