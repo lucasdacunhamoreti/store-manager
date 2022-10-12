@@ -1,4 +1,5 @@
 const productModel = require('../models/product.model');
+const validate = require('./validations/validationData');
 
 const getProducts = async () => {
   const result = await productModel.getProducts();
@@ -11,7 +12,21 @@ const getOneProduct = async (id) => {
   return { code: 200, message: result };
 };
 
+const registerProduct = async (name, body) => {
+  const error = await validate.validateProduct(body);
+  if (error) {
+    const errorMessage = error.details[0].message;
+    if (errorMessage === '"name" is required') return { code: 400, error: errorMessage };
+    if (errorMessage === '"name" length must be at least 5 characters long') {
+      return { code: 422, error: errorMessage };
+    }
+  }
+  const result = await productModel.registerProduct(name);
+  return { code: 201, message: result };
+};
+
 module.exports = {
   getProducts,
   getOneProduct,
+  registerProduct,
 };
