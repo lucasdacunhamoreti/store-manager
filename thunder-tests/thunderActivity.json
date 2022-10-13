@@ -5,10 +5,17 @@
     "containerId": "",
     "name": "localhost:3000/sales",
     "url": "localhost:3000/products/1",
+<<<<<<< HEAD
     "method": "DELETE",
     "sortNum": 0,
     "created": "2022-10-13T11:49:57.550Z",
     "modified": "2022-10-13T20:47:58.153Z",
+=======
+    "method": "PUT",
+    "sortNum": 0,
+    "created": "2022-10-13T11:49:57.550Z",
+    "modified": "2022-10-13T20:27:55.073Z",
+>>>>>>> f1a3a7c7d3793f77aae3962d8030d63e0eb7a1e4
     "headers": [],
     "params": [],
     "body": {
