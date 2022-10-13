@@ -18,4 +18,15 @@ const registerSale = async (body) => {
   return { code: 201, message: result };
 };
 
-module.exports = { registerSale };
+const getSales = async () => {
+  const result = await saleModel.getSales();
+  return { code: 200, message: result };
+};
+
+const getOneSale = async (id) => {
+  const result = await saleModel.getOneSale(id);
+  if (!result.length) return { code: 404, error: 'Sale not found' };
+  return { code: 200, message: result };
+};
+
+module.exports = { registerSale, getSales, getOneSale };
