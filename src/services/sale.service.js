@@ -9,9 +9,12 @@ const registerSale = async (body) => {
     error = error.details[0].message;
     return verifyError.verifyError(error);
   }
+  console.log(body, 'BODYYY');
   const getProducts = await Promise.all(body
     .map(async (item) => productModel.getOneProduct(item.productId)));
+  console.log(getProducts);
   const verifyProducts = getProducts.some((item) => item === undefined);
+  // console.log(verifyProducts, 'verifyProducts');
   if (verifyProducts) return { code: 404, error: 'Product not found' };
 
   const result = await saleModel.registerSale(body);

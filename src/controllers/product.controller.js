@@ -18,4 +18,19 @@ const registerProduct = async (req, res) => {
   res.status(code).json(message);
 };
 
-module.exports = { getProducts, getOneProduct, registerProduct };
+const updateProduct = async (req, res) => {
+  const { id } = req.params;
+  const { name } = req.body;
+  const { code, message, error } = await productService.updateProduct(name, id);
+  if (error) return res.status(code).json({ message: error });
+  res.status(code).json(message);
+};
+
+const deleteProduct = async (req, res) => {
+  const { id } = req.params;
+  const { code, message, error } = await productService.deleteProduct(id);
+  if (error) return res.status(code).json({ message: error });
+  res.status(code).json(message);
+};
+
+module.exports = { getProducts, getOneProduct, registerProduct, updateProduct, deleteProduct };

@@ -9,7 +9,7 @@ const { saleDB, bodySale, allSales, saleId } = require('./mocks/sale.model.mock'
 
 describe('Verificando model de vendas', function () {
   describe('Teste de unidade do saleModel', function () {
-    it('Cadastrando produtos com sucesso', async function () {
+    it('Cadastrando vendas com sucesso', async function () {
       sinon.stub(connection, 'execute').resolves([{ insertId: 3 }]);
 
       const result = await saleModel.registerSale(bodySale);
@@ -17,7 +17,7 @@ describe('Verificando model de vendas', function () {
       expect(result).to.be.deep.equal(saleDB);
     });
 
-    it('Retorna todos os produtos com sucesso', async function () {
+    it('Retorna todos as vendas com sucesso', async function () {
       sinon.stub(connection, 'execute').resolves([allSales]);
 
       const result = await saleModel.getSales();

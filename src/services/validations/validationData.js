@@ -1,10 +1,13 @@
 const productValidation = require('./validationProduct');
 const saleValidation = require('./validationSale');
 
-// const productModel = require('../models/product.model');
-
 const validateProduct = (body) => {
   const { error } = productValidation.productSchema.validate(body);
+  return error;
+};
+
+const validateNameProduct = (body) => {
+  const { error } = productValidation.validateNameSchema.validate(body);
   return error;
 };
 
@@ -17,4 +20,4 @@ const validateSale = (body) => {
   }
 };
 
-module.exports = { validateProduct, validateSale };
+module.exports = { validateProduct, validateSale, validateNameProduct };

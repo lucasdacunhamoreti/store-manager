@@ -1,5 +1,3 @@
-// const productModel = require('../models/product.model');
-
 const verifyError = (error) => {
   switch (error) {
     case '"productId" is required':
