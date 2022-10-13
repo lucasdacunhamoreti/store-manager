@@ -4,7 +4,7 @@ const sinon = require('sinon');
 const connection = require('../../../src/models/connection');
 const saleModel = require('../../../src/models/saleModel');
 
-const { saleDB, bodySale } = require('./mocks/sale.model.mock');
+const { saleDB, bodySale, allSales, saleId } = require('./mocks/sale.model.mock');
 
 
 describe('Verificando model de vendas', function () {
@@ -15,6 +15,22 @@ describe('Verificando model de vendas', function () {
       const result = await saleModel.registerSale(bodySale);
 
       expect(result).to.be.deep.equal(saleDB);
+    });
+
+    it('Retorna todos os produtos com sucesso', async function () {
+      sinon.stub(connection, 'execute').resolves([allSales]);
+
+      const result = await saleModel.getSales();
+
+      expect(result).to.be.deep.equal(allSales);
+    });
+
+    it('Retorna vendas com sucesso buscando por id', async function () {
+      sinon.stub(connection, 'execute').resolves([saleId]);
+
+      const result = await saleModel.getOneSale(1);
+
+      expect(result).to.be.deep.equal(saleId);
     });
   });
   afterEach(sinon.restore);

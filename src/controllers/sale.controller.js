@@ -7,8 +7,7 @@ const registerSale = async (req, res) => {
 };
 
 const getSales = async (_req, res) => {
-  const { code, message, error } = await saleService.getSales();
-  if (error) return res.status(code).json({ message: error });
+  const { code, message } = await saleService.getSales();
   res.status(code).json(message);
 };
 
