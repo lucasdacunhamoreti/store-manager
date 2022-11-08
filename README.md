@@ -1,5 +1,5 @@
-# TrybeWallet
-> Aplicação de carteira digital feita com React e Redux.
+# Store Manager
+> Aplicação de loja de produtos.
 
 ## 💻 Projeto
 
@@ -12,32 +12,17 @@ A API desenvolvida é um sistema de gerenciamento de vendas no formato dropshipp
 - NodeJs
 - MySQL
 - Docker
+- Mocha
+- Chai
+- Sinon
 
 ## 📌 Habilidades
 
 > Neste projeto, desenvolvi as seguintes habilidades:
 
-- Criar um store, reducers, actions e dispatchers no Redux em aplicações React;
-- Conectar Redux aos componentes React;
-- Criar actions assíncronas em uma aplicação React que faz uso de Redux.
-
-## ⬇️ Instalando dependências
-
-```bash
-npm install
-``` 
-
-## ⚡ Executando a aplicação
-
-```bash
-npm start
-``` 
-
-## 🧪 Executando os testes
-
-```bash
-npm test
-```
+- Criar rotas utilizando a estrutura MSC;
+- Desenvolver testes de unidade nas camadas;
+- Validação de dados.
 
 ## 💬 Contatos
 
