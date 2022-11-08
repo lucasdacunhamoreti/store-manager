@@ -1,5 +1,5 @@
 # Store Manager
-> Aplicação de loja de produtos.
+> Aplicação de uma loja de produtos.
 
 ## 💻 Projeto
 
